@@ -1,7 +1,7 @@
 import { writeFileSync } from "fs";
-import { EnvFile } from "./index.d";
+import { EnvFile } from "./types";
 import { resolve } from "path";
-import parseEnvFile from "./parseEnvFile";
+import parseEnvFile from "./parse-env-file";
 
 const updateVariables = (envFile: string) =>
 {

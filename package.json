@@ -6,7 +6,7 @@
     "envs": "./dist/src/index.js"
   },
   "scripts": {
-    "build": "npx tsc"
+    "build": "tsc"
   },
   "dependencies": {
     "json-diff": "^1.0.6",

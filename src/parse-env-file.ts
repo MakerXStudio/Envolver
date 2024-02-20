@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
-import type { EnvVariable, Section, SectionTitle, SectionComment, EnvFile } from './index.d';
+import type { EnvVariable, Section, SectionTitle, SectionComment, EnvFile } from './types';
 
 const variableData = (data: string, comment?: string) =>
 {

@@ -1,5 +1,5 @@
-import checkVariables from './checkVariables';
-import type { EnvVariable, Section, EnvFile, EnvFileDiff } from './index.d';
+import checkVariables from './check-variables';
+import type { EnvVariable, Section, EnvFile, EnvFileDiff } from './types';
 
 const diffVars = (existingEnvVariables: EnvFile, newEnvFile: EnvFile) =>
 {

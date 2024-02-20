@@ -1,4 +1,4 @@
-import type { EnvVariable, Section, EnvVariableDiff, SectionDiff } from './index.d';
+import type { EnvVariable, Section, EnvVariableDiff, SectionDiff } from './types';
 
 const compareData = (variable: EnvVariable | Section, existingVariable: EnvVariable | Section) =>
 {

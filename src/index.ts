@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import { argv, cwd } from 'process'
 import { resolve } from 'path';
-import summariseVariables from './summariseVariables';
-import updateVariables from './updateVariables';
+import summariseVariables from './summarise-variables';
+import updateVariables from './update-variables';
 
 const [, , command, filePath] = argv
 

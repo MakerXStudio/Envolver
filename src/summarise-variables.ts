@@ -1,8 +1,8 @@
 import { resolve } from 'path';
 import { readFileSync, writeFileSync, accessSync } from 'fs';
-import type { EnvFile } from './index.d';
-import diffVars from './diffVariables';
-import parseEnvFile from './parseEnvFile';
+import type { EnvFile } from './types';
+import diffVars from './diff-variables';
+import parseEnvFile from './parse-env-file';
 
 
 const summariseVariables = (envFile: string) =>
