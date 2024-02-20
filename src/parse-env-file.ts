@@ -1,4 +1,3 @@
-import { readFileSync } from 'fs'
 import type { EnvVariable, Section, SectionTitle, SectionComment, EnvFile } from './types'
 
 const variableData = (data: string, comment?: string) => {
@@ -6,10 +5,9 @@ const variableData = (data: string, comment?: string) => {
   return { name, value, comment }
 }
 
-const parseEnvFile = (envFile: string): EnvFile => {
-  const envContents = readFileSync(envFile, 'utf8')
+const parseEnvFile = (envFileContents: string): EnvFile => {
   const envData: EnvFile = []
-  const [uncategorised, ...sectionData] = envContents.split('\n\n')
+  const [uncategorised, ...sectionData] = envFileContents.split('\n\n')
 
   let variableComment: string | undefined = undefined
 

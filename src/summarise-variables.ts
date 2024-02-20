@@ -5,7 +5,9 @@ import diffVars from './diff-variables'
 import parseEnvFile from './parse-env-file'
 
 const summariseVariables = (envFile: string) => {
-  const envData: EnvFile = parseEnvFile(envFile)
+  const envContents = readFileSync(envFile, 'utf8')
+
+  const envData: EnvFile = parseEnvFile(envContents)
 
   let existingEnvs: string = '[]'
 
