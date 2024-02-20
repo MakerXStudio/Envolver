@@ -1,0 +1,21 @@
+{
+  "name": "env_changes",
+  "version": "0.0.1",
+  "main": "./dist/src/index.js",
+  "bin": {
+    "envs": "./dist/src/index.js"
+  },
+  "scripts": {
+    "build": "npx tsc"
+  },
+  "dependencies": {
+    "json-diff": "^1.0.6",
+    "jsonminify": "^0.4.2",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/json-diff": "^1.0.2",
+    "@types/jsonminify": "^0.4.3",
+    "@types/node": "^20.11.19"
+  }
+}
