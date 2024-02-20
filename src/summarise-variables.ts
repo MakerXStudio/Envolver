@@ -1,44 +1,29 @@
-import { resolve } from 'path';
-import { readFileSync, writeFileSync, accessSync } from 'fs';
-import type { EnvFile } from './types';
-import diffVars from './diff-variables';
-import parseEnvFile from './parse-env-file';
+import { resolve } from 'path'
+import { readFileSync, writeFileSync, accessSync } from 'fs'
+import type { EnvFile } from './types'
+import diffVars from './diff-variables'
+import parseEnvFile from './parse-env-file'
 
+const summariseVariables = (envFile: string) => {
+  const envData: EnvFile = parseEnvFile(envFile)
 
-const summariseVariables = (envFile: string) =>
-{
+  let existingEnvs: string = '[]'
 
-	const envData: EnvFile = parseEnvFile(envFile)
+  try {
+    accessSync(resolve(process.cwd(), 'vars.json'))
 
-	let existingEnvs: string = '[]'
+    existingEnvs = readFileSync(resolve(process.cwd(), 'vars.json'), 'utf8')
+  } catch {
+    console.error('Something broke')
+  }
 
-	try
-	{
-		accessSync(
-			resolve(process.cwd(), 'vars.json')
-		)
+  const existingEnvsData: EnvFile = JSON.parse(existingEnvs)
+  const difference = diffVars(existingEnvsData, envData)
 
-		existingEnvs = readFileSync(
-			resolve(process.cwd(), 'vars.json'),
-			'utf8'
-		) as unknown as string
-	} catch { }
+  // Compare the difference and write to the diff file
+  writeFileSync(resolve(process.cwd(), 'vars.diff.json'), JSON.stringify(difference, null, 2), 'utf8')
 
-	const existingEnvsData: EnvFile = JSON.parse(existingEnvs)
-	const difference = diffVars(existingEnvsData, envData)
-
-	// Compare the difference and write to the diff file
-	writeFileSync(
-		resolve(process.cwd(), 'vars.diff.json'),
-		JSON.stringify(
-			difference,
-			null,
-			2
-		),
-		'utf8'
-	)
-
-	return difference
+  return difference
 }
 
 export default summariseVariables
