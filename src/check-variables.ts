@@ -39,7 +39,7 @@ const checkSection = (current: Section, compare: Section) => {
   return data
 }
 
-const checkVariables = (current: EnvVariable | Section, compare: (EnvVariable | Section)[]) => {
+export const checkVariables = (current: EnvVariable | Section, compare: (EnvVariable | Section)[]) => {
   // Check if variable exists
   const exists = checkExists(current, compare)
 
@@ -80,5 +80,3 @@ const checkVariables = (current: EnvVariable | Section, compare: (EnvVariable | 
 
   return
 }
-
-export default checkVariables

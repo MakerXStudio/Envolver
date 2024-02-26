@@ -5,7 +5,7 @@ const variableData = (data: string, comment?: string) => {
   return { name, value, comment }
 }
 
-const parseEnvFile = (envFileContents: string): EnvFile => {
+export const parseEnvFile = (envFileContents: string): EnvFile => {
   const envData: EnvFile = []
   const [uncategorised, ...sectionData] = envFileContents.split('\n\n')
 
@@ -51,5 +51,3 @@ const parseEnvFile = (envFileContents: string): EnvFile => {
 
   return envData
 }
-
-export default parseEnvFile

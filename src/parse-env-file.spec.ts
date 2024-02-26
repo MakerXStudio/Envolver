@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import parseEnvFile from './parse-env-file'
+import { parseEnvFile } from './parse-env-file'
 
 describe('parseEnvFile', () => {
   describe('when parsing a single line', () => {

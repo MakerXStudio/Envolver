@@ -1,7 +1,7 @@
-import checkVariables from './check-variables'
+import { checkVariables } from './check-variables'
 import type { EnvVariable, Section, EnvFile, EnvFileDiff } from './types'
 
-const diffVars = (existingEnvVariables: EnvFile, newEnvFile: EnvFile) => {
+export const diffVars = (existingEnvVariables: EnvFile, newEnvFile: EnvFile) => {
   const changedValues: EnvFileDiff = []
 
   newEnvFile.forEach((i: EnvVariable | Section) => {
@@ -14,5 +14,3 @@ const diffVars = (existingEnvVariables: EnvFile, newEnvFile: EnvFile) => {
 
   return changedValues
 }
-
-export default diffVars
