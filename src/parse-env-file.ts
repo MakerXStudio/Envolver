@@ -7,18 +7,24 @@ const variableData = (data: string, comment?: string) => {
 
 export const parseEnvFile = (envFileContents: string): EnvFile => {
   const envData: EnvFile = []
-  const [uncategorised, ...sectionData] = envFileContents.split('\n\n')
+  let lineEnding: string = '\n'
+
+  if (envFileContents.includes('\r\n')) {
+    lineEnding = '\r\n'
+  }
+
+  const [uncategorised, ...sectionData] = envFileContents.split(`${lineEnding}${lineEnding}`)
 
   let variableComment: string | undefined = undefined
 
-  uncategorised.split('\n').forEach((line) => {
+  for (const line of uncategorised.split(lineEnding)) {
     if (line.startsWith('#')) {
       variableComment = line.replace('#', '').trim()
-      return
+      continue
     }
     envData.push(variableData(line, variableComment))
     variableComment = undefined
-  })
+  }
 
   sectionData.forEach((section) => {
     const sectionVariables: EnvVariable[] = []
