@@ -1,9 +1,9 @@
 {
   "name": "@makerx/envolver",
   "version": "0.0.1",
-  "main": "./dist/src/index.js",
+  "main": "./dist/index.js",
   "bin": {
-    "envs": "./dist/src/index.js"
+    "envolver": "./dist/index.js"
   },
   "scripts": {
     "audit": "better-npm-audit audit",

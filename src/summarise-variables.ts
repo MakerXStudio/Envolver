@@ -1,5 +1,5 @@
 import { resolve } from 'path'
-import { readFileSync, writeFileSync, accessSync } from 'fs'
+import { readFileSync, accessSync } from 'fs'
 import type { EnvFile } from './types'
 import { diffVars } from './diff-variables'
 import { parseEnvFile } from './parse-env-file'
@@ -22,9 +22,6 @@ export const summariseVariables = (envFile: string) => {
 
   const existingEnvsData: EnvFile = JSON.parse(existingEnvs)
   const difference = diffVars(existingEnvsData, envData)
-
-  // Compare the difference and write to the diff file
-  writeFileSync(resolve(cwd(), 'vars.diff.json'), JSON.stringify(difference, null, 2), 'utf8')
 
   return difference
 }

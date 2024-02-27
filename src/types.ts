@@ -40,3 +40,9 @@ export type SectionComment = string | null
 export type EnvFile = (EnvVariable | Section)[]
 
 export type EnvFileDiff = (EnvVariableDiff | SectionDiff)[]
+
+export type ResultsOutput = 'json' | 'console'
+
+export type CheckCommandOptions = {
+  output: ResultsOutput
+}
