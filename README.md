@@ -42,7 +42,7 @@ jobs:
       - name: Update Variables
         run: npx envolver update .env.sample
 
-			- name: Commit to repo
+      - name: Commit to repo
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
