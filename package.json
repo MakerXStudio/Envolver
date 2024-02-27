@@ -1,21 +1,54 @@
 {
-  "name": "env_changes",
+  "name": "@makerx/envolver",
   "version": "0.0.1",
-  "main": "./dist/src/index.js",
+  "main": "./dist/index.js",
   "bin": {
-    "envs": "./dist/src/index.js"
+    "envolver": "./dist/index.js"
   },
   "scripts": {
-    "build": "npx tsc"
+    "audit": "better-npm-audit audit",
+    "format": "prettier --write .",
+    "lint": "eslint \"src/**/*.ts\"",
+    "lint:fix": "eslint \"src/**/*.ts\" --fix",
+    "build": "run-s build:*",
+    "build:0-clean": "rimraf dist coverage",
+    "build:1-lint": "eslint \"src/**/*.ts\" --max-warnings 0",
+    "build:2-check-types": "tsc -p tsconfig.json",
+    "build:3-build": "rollup -c --configPlugin typescript",
+    "build:4-copy-pkg-json": "tstk copy-package-json -c",
+    "build:5-copy-readme": "copyfiles ./README.md ./dist",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:ci": "vitest run --coverage --reporter junit --outputFile test-results.xml"
   },
   "dependencies": {
+    "commander": "^12.0.0",
     "json-diff": "^1.0.6",
     "jsonminify": "^0.4.2",
     "typescript": "^5.3.3"
   },
   "devDependencies": {
+    "@makerx/eslint-config": "3.1.1",
+    "@makerx/prettier-config": "2.0.1",
+    "@makerx/ts-toolkit": "^4.0.0-beta.13",
+    "@rollup/plugin-commonjs": "25.0.7",
+    "@rollup/plugin-json": "6.1.0",
+    "@rollup/plugin-node-resolve": "15.2.3",
+    "@rollup/plugin-typescript": "11.1.6",
+    "@tsconfig/node20": "20.1.2",
     "@types/json-diff": "^1.0.2",
     "@types/jsonminify": "^0.4.3",
-    "@types/node": "^20.11.19"
+    "@types/node": "^20.11.19",
+    "@vitest/coverage-v8": "1.3.1",
+    "better-npm-audit": "3.7.3",
+    "copyfiles": "2.4.1",
+    "eslint": "8.56.0",
+    "npm-run-all": "4.1.5",
+    "prettier": "3.2.5",
+    "rimraf": "5.0.5",
+    "rollup": "4.12.0",
+    "tsx": "4.7.1",
+    "typescript": "5.3.3",
+    "vitest": "1.3.1"
   }
 }
