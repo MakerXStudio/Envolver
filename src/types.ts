@@ -45,4 +45,5 @@ export type ResultsOutput = 'json' | 'console'
 
 export type CheckCommandOptions = {
   output: ResultsOutput
+  update?: boolean
 }
