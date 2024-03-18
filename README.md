@@ -1,6 +1,6 @@
 # Envolver
 
-Envolver is a CLI (Command Line Interface) tool that streamlines the management of environment variables in your local .env file. Developed in TypeScript, it simplifies the task of handling frequently changing environment variables, especially in projects with multiple contributors. For a more detailed explanation of its uses and some real-life scenarios where Envolver shines, check out our blog post.
+Envolver is a CLI (Command Line Interface) tool that streamlines the management of environment variables in your local .env file. Developed in TypeScript, it simplifies the task of handling frequently changing environment variables, especially in projects with multiple contributors. For a more detailed explanation of its uses and some real-life scenarios where Envolver shines, check out [our blog post](https://blog.makerx.com.au/envolver-a-cli-tool-for-managing-environment-variables/).
 
 ## Environment Variables
 
@@ -16,9 +16,9 @@ envolver check <filePath> -o <output>
 
 ### Options
 
-| Option                  | Description                                                | Default   |
-| ----------------------- | ---------------------------------------------------------- | --------- |
-| `<filePath>`            | The path to your `.env` file. Required argument. | N/A       |
+| Option                  | Description                                           | Default   |
+| ----------------------- | ----------------------------------------------------- | --------- |
+| `<filePath>`            | The path to your `.env` file. Required argument.      | N/A       |
 | `-o, --output <output>` | The output method. Can be either 'json' or 'console'. | 'console' |
 
 ## Update Variables
