@@ -1,6 +1,6 @@
 {
   "name": "@makerx/envolver",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": "./dist/index.js",
   "bin": {
     "envolver": "./dist/index.js"
