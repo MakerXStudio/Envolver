@@ -1,11 +1,16 @@
 # Envolver
 
-This is a command-line interface (CLI) tool designed to check and update environment variables in your local .env file. It's written in TypeScript and uses the commander package to handle command-line inputs.
+Envolver is a CLI (Command Line Interface) tool that streamlines the management of environment variables in your local .env file. Developed in TypeScript, it simplifies the task of handling frequently changing environment variables, especially in projects with multiple contributors. For a more detailed explanation of its uses and some real-life scenarios where Envolver shines, check out our blog post.
+
+## Environment Variables
+
+Environment variables are key-value pairs typically stored in a .env file. They are used to store sensitive information like API keys and passwords separate from the main codebase. These variables often change, especially in projects with multiple contributors, which can make them difficult to keep updated. Envolver helps manage these changes effectively.
 
 ## Check Variables
-To check if any environment variables have changed, use the check command followed by the path to your .env file.
 
-```
+The `check` command compares your local .env file to the latest changes in the code repository.
+
+```bash
 envolver check <filePath> -o <output>
 ```
 
@@ -13,17 +18,22 @@ envolver check <filePath> -o <output>
 
 | Option                  | Description                                                | Default   |
 | ----------------------- | ---------------------------------------------------------- | --------- |
-| `<filePath>`            | The path to your `.env` file. This is a required argument. | N/A       |
-| `-o, --output <output>` | The output method. This can be either 'json' or 'console'. | 'console' |
+| `<filePath>`            | The path to your `.env` file. Required argument. | N/A       |
+| `-o, --output <output>` | The output method. Can be either 'json' or 'console'. | 'console' |
 
 ## Update Variables
-To update the environment variables in your .env file, use the update command followed by the path to your .env file.
 
-```
+The `update` command generates a vars.json file that summarizes your current environment variables. This file can be included in the code repository or added to your .gitignore file if it contains sensitive information. 
+
+```bash
 envolver update <filePath>
 ```
 
-This is best run automatically, eg. as part of a GitHub Actions workflow, to ensure that the file is kept up to date with the latest changes.
+Envolver also organizes the variables into sections for easier management.
+
+## Automating Updates
+
+You can configure Envolver to run automatically as part of a GitHub Actions workflow. This ensures your environment variables are always synchronized with the latest changes in the code repository.
 
 ```yaml
 name: Update Environment Variables
@@ -54,14 +64,4 @@ jobs:
               tree: env.object_tree,
               parents: [env.parent]
             });
-```
-
-If you prefer not to have an additional file added to your repo, you can run the watch file against a sample .env file, then check against those results, eg.
-
-```
-envolver update .env.sample
-```
-
-```
-envolver check .env --output=json
 ```
