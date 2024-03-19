@@ -12,7 +12,7 @@ const program = new Command()
 program
   .name('envolver')
   .description(`A CLI tool to check what environment variables have changed since your local .env file was last updated.`)
-  .version('1.0.1')
+  .version('1.0.2')
 
 program
   .command('check')

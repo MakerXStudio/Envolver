@@ -7,7 +7,7 @@ const config: TsToolkitConfig = {
     moduleType: 'commonjs',
     main: 'index.ts',
     bin: {
-      envs: 'index.ts',
+      envolver: 'index.ts',
     },
   },
 }
